@@ -255,7 +255,7 @@ module XMLSecurity
         begin
           cert = OpenSSL::X509::Certificate.new(cert_text)
         rescue OpenSSL::X509::CertificateError => _e
-          return append_error("Certificate Error", soft)
+          return append_error("Certificate Error")
         end
 
         # check saml response cert matches provided idp cert
