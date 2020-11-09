@@ -11,7 +11,9 @@ module OneLogin
       def append_error(error_msg, soft_override = nil)
         @errors << error_msg
 
-        unless soft_override.nil? ? soft : soft_override
+        soft_result = respond_to?(:soft) ? send(:soft) : false
+        
+        unless soft_override.nil? ? soft_result : soft_override
           raise ValidationError.new(error_msg)
         end
 
